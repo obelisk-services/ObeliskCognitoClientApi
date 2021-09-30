@@ -12,11 +12,11 @@ use  \ObeliskModules\ObeliskCognitoMachineToMachine\Models\ModelCognitoToken;
 class ObeliskCognitoMachineToMachineLibrary implements ObeliskAuthMachineToMachineInterface
 {
   private $cognitoTokenModel;
-  public function __construct(string $configFile){
+  public function __construct(string $apiGroup ='apiDefault'){
     //inicializo modelo
 
     $this->cognitoTokenModel = model('\ObeliskModules\ObeliskCognitoMachineToMachine\Models\ModelCognitoToken') ;
-    $this->cognitoTokenModel->setConfigFile($configFile);
+    $this->cognitoTokenModel->setApiConfig($apiGroup);
 
   }
   /**
@@ -26,10 +26,18 @@ class ObeliskCognitoMachineToMachineLibrary implements ObeliskAuthMachineToMachi
    * @throws Exception Si se produce alguna anomalia en la comunicacion con Aws Cognito.
    */
   public function getAccessToken(){
-    if(!isset($this->cognitoTokenModel)){
+
+      // $token =   $this->cognitoTokenModel->getTokenFromDB();
+      // if ( $token === null ||   $token->is_expired()){
+      //   $response =  $this->cognitoTokenModel->getTokenFromCognito();
+      //   $token = new  TokenEntity();
+      //   $token->token = json_decode($response->getBody())->access_token;
+      //   $token->expires_at = (json_decode($response->getBody())->expires_in + time());
+      //   $this->cognitoTokenModel->setTokenToDB($token);
+      // }
+      //  // d($token->expires_at);
+      // return $token->token;
       return $this->cognitoTokenModel->getToken();
     }
-    return false;
-  }
 
 }

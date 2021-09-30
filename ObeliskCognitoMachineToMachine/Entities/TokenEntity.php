@@ -23,7 +23,7 @@ class TokenEntity extends Entity {
   public  function is_expired():bool{
        // d( $this->attributes['expires_at']);
        // d( time());
-    if (($this->attributes['expires_at']) < time()){//los 10 de margen de error
+    if (($this->attributes['expires_at']) < time()-10){//los 10 de margen de error
       return true;
     }
     return false;

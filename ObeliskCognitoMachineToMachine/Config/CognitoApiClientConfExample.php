@@ -1,4 +1,4 @@
-<?php namespace ObeliskModules\ObeliskCognitoMachineToMachine\Config; //namespace ObeliskModules\ObeliskCognitoApi\Config;
+<?php namespace ObeliskModules\ObeliskCognitoMachineToMachine\Config;
 
 use CodeIgniter\Config\BaseConfig;
 
@@ -7,19 +7,22 @@ use CodeIgniter\Config\BaseConfig;
  *
  * @link https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html
  */
-class CognitoApiClientConfigFile extends BaseConfig
+class Cognito extends BaseConfig
 {
-  public $aliasToken = '';
-  public $client_id =  '';
-  public $client_secret = '';
-  public $base_uri = '';
-  public $redirec_uri = '';
-  public $grant_type =  'client_credentials';
-  public $timeout = 3.0;
-  public $verifySSL= true;
-  public $region = "";
-  public $userPoolId = "";
-  public $leeway = 10;
+  public $apiDefault = [
+    'aliasToken' => '', // todo en la siguiente version cambiar a un valor sacado del resto por ejemenplo sha256(clienteid.userpolid.'obelisk')
+    'client_id' =>  '',
+    'client_secret' => '',
+    'base_uri' => '',
+    'redirec_uri' => '',
+    'grant_type' =>  'client_credentials',
+    'timeout' => 3.0,
+    'verifySSL'=> true,
+    'region' => "",
+    'userPoolId' => "",
+    'leeway' => 10,
+
+  ];
 
 
 }
